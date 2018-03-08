@@ -1,0 +1,26 @@
+<ul class="nav">
+  <li>
+    <%= link_to "Web_Monitor", root_path, class: "brand" %>
+  </li>
+
+
+<% if logged_in? %>
+  <div class="nav_item">
+    <%= link_to 'My Alerts', user_path(current_user), class: "btn btn-success btn-small" %>
+  </div>
+  <div class="nav_item">
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-small" %>
+  </div>
+  <div class="nav_item">
+    <%= link_to 'Log Out', logout_path, class: "btn btn-small" %>
+  </div>
+<% else %>
+  <div class="nav_item">
+    <%= link_to 'Register', register_path, class: "btn btn-success btn-small" %>
+  </div>
+  <div class="nav_item">
+    <%= link_to "Log In", login_path, class: "btn btn-small" %>
+  </div>
+<% end %>
+
+</ul>
