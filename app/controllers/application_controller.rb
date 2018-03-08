@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_same_user
-    access_denied unless logged_in? && current_user == @user
+    access_denied unless logged_in? && current_user == @user || current_user.admin?
   end
   
   def require_admin

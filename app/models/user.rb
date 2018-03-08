@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  before_save :activate
-  
   has_many :user_alerts
   has_many :alerts, through: :user_alerts
+  
+  before_save :activate
   
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

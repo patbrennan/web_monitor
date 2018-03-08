@@ -1,0 +1,24 @@
+<div>
+  <%= form_for [@user, @alert] do |f| %>
+    <%= f.label :name, "Alert Name" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :url, "URL" %>
+    <%= f.url_field :url %>
+    <br>
+    <%= f.label :crawl_interval_mins, "Crawl Interval (mins)" %>
+    <%= f.number_field :crawl_interval_mins, min: 30 %>
+    <br>
+    <%= f.label :response_time_threshold_ms, "Response Time Threshold (ms)" %>
+    <%= f.number_field :response_time_threshold_ms %>
+    <br>
+    <%= f.label :active, "Active?" %>
+    <%= f.check_box :active %>
+    <br>
+    <%= f.label :notify_emails, "Notification Emails:" %>
+    <%= f.text_field :notify_emails %>
+    <br>
+    
+    <%= f.submit "#{@alert.new_record? ? 'Create' : 'Update'}", class: "btn btn-primary" %>
+  <% end %>
+</div>

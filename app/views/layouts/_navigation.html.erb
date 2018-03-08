@@ -6,7 +6,10 @@
 
 <% if logged_in? %>
   <div class="nav_item">
-    <%= link_to 'My Alerts', user_path(current_user), class: "btn btn-success btn-small" %>
+    <%= link_to 'My Alerts', user_alerts_path(current_user), class: "btn btn-success btn-small" %>
+  </div>
+  <div class="nav_item">
+    <%= link_to '+ New Alert', new_user_alert_path(current_user), class: "btn btn-success btn-small" %>
   </div>
   <div class="nav_item">
     <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-small" %>

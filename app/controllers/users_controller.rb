@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_user, except: [:new, :create]
+  before_action :require_same_user, only: [:edit, :update]
   
   def new
     @user = User.new
@@ -18,12 +20,21 @@ class UsersController < ApplicationController
   
   def show; end
   
-  def edit; end
+  def edit
+    unless @user
+      flash[:error] = "User not found."
+      redirect_to root_path
+    end
+  end
   
   def update
-    if @user.update(user_params)
-      flash[:success] = "Updated Profile for <strong>#{@user.username}</strong>"
-      redirect_to user_path
+    # binding.pry
+    if @user && @user.update(user_params)
+      flash[:success] = "Updated Profile for #{@user.username}"
+      redirect_to :back
+    elsif !@user
+      flash[:error] = "User not found"
+      redirect_to root_path
     else
       render :edit
     end
