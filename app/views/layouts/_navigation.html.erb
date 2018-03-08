@@ -1,6 +1,7 @@
 <ul class="nav">
+  <% home_path = logged_in? ? user_alerts_path(current_user) : root_path %>
   <li>
-    <%= link_to "Web_Monitor", root_path, class: "brand" %>
+    <%= link_to "Web_Monitor", home_path, class: "brand" %>
   </li>
 
 

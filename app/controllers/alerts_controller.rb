@@ -1,20 +1,20 @@
 class AlertsController < ApplicationController
-  before_action :set_user, only: [:index, :show]
+  before_action :require_user # require a user first
+  before_action :set_user, only: [:show, :edit]
+  before_action :require_shared_user, only: [:edit, :update, :destroy, :crawls, :show]
   
-  def index
+  def index; end
+  
+  def show # /users/:user_id/alerts/:id
     
   end
   
-  def show
-    
-  end
-  
-  def new
+  def new # GET /users/:user_id/alerts/new
     @user = current_user
     @alert = Alert.new
   end
   
-  def create
+  def create # POST /users/:user_id/alerts/new
     @alert = Alert.new(alert_params)
     @user = current_user
     
@@ -28,16 +28,25 @@ class AlertsController < ApplicationController
     end
   end
   
-  def edit
-    
+  def edit # GET /users/:user_id/alerts/:id/edit
+    @alert = Alert.find(params[:id])
   end
   
-  def udpate
+  def udpate # PUT /users/:user_id/alerts/:id/edit
     
   end
   
   def destroy
     
+  end
+  
+  def crawls
+    @alert = Alert.find(params[:alert_id])
+    @crawls = @alert.crawls
+    
+    respond_to do |f|
+      f.json { render json: @crawls }
+    end
   end
   
   private
@@ -51,6 +60,12 @@ class AlertsController < ApplicationController
   end
   
   def set_user
-    @user = User.find_by(username: params[:id])
+    @user = User.find_by(username: params[:user_id])
+  end
+  
+  # User must be in the join table user_alerts (shared) to have access
+  def require_shared_user
+    @alert = Alert.find(params[:id])
+    access_denied unless @alert.users.include? current_user
   end
 end

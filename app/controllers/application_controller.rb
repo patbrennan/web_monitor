@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   
   def current_user
-    @user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
   def logged_in?
@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     access_denied unless logged_in? && current_user.admin?
   end
+  
   def access_denied
     flash[:error] = "You don't have permission to do that."
     redirect_to root_path

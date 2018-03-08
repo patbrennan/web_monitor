@@ -20,15 +20,9 @@ class UsersController < ApplicationController
   
   def show; end
   
-  def edit
-    unless @user
-      flash[:error] = "User not found."
-      redirect_to root_path
-    end
-  end
+  def edit; end
   
   def update
-    # binding.pry
     if @user && @user.update(user_params)
       flash[:success] = "Updated Profile for #{@user.username}"
       redirect_to :back

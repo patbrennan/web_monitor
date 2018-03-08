@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :user_alerts
-  has_many :alerts, through: :user_alerts
+  has_many :alerts, through: :user_alerts, dependent: :destroy
   
   before_save :activate
   

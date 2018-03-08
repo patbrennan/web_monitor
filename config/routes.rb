@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   
-  resources :users, except: [:destroy, :index, :new] do
-    resources :alerts
+  resources :users, except: [:destroy, :index, :new, :show] do
+    resources :alerts do
+      get :crawls # "/users/:username/alerts/crawls"
+    end
   end
 end
