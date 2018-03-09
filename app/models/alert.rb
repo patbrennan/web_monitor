@@ -17,4 +17,6 @@ class Alert < ActiveRecord::Base
   def deactivate
     self.active = false
   end
+  
+  
 end

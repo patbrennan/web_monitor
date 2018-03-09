@@ -3,22 +3,21 @@
   <head>
     <title>RoR Website Monitoring Tool</title>
     <%= csrf_meta_tags %>
+    <%#= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
   <header>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </div>
+    <div class="container">
+      <%= render 'layouts/navigation' %>
     </div>
   </header>
 
   <body>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

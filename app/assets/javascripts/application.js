@@ -11,8 +11,16 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
+//= require turbolinks
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$(function() {
+  // Must be delegated to document so it works w/turbolinks
+  $(document).on("click", ".clickable-row", function(e) {
+    var url = $(e.target).closest("tr").attr("data-url");
+    window.location = url;
+  });
+});

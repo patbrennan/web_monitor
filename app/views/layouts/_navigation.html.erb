@@ -1,30 +1,31 @@
-<ul class="nav">
+<nav class="nav">
+  
   <% home_path = logged_in? ? user_alerts_path(current_user) : root_path %>
-  <li>
-    <%= link_to "Web_Monitor", home_path, class: "brand" %>
+  <li class="nav-item">
+    <%= link_to "Web_Monitor", home_path, class: "navbar-brand mb-0 h1" %>
   </li>
 
-
 <% if logged_in? %>
-  <div class="nav_item">
-    <%= link_to 'My Alerts', user_alerts_path(current_user), class: "btn btn-success btn-small" %>
-  </div>
-  <div class="nav_item">
-    <%= link_to '+ New Alert', new_user_alert_path(current_user), class: "btn btn-success btn-small" %>
-  </div>
-  <div class="nav_item">
-    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-small" %>
-  </div>
-  <div class="nav_item">
-    <%= link_to 'Log Out', logout_path, class: "btn btn-small" %>
-  </div>
+  <li class="nav-item">
+    <%= link_to 'My Alerts', user_alerts_path(current_user), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to '+ New Alert', new_user_alert_path(current_user), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Log Out', logout_path, class: "nav-link" %>
+  </li>
 <% else %>
-  <div class="nav_item">
-    <%= link_to 'Register', register_path, class: "btn btn-success btn-small" %>
-  </div>
-  <div class="nav_item">
-    <%= link_to "Log In", login_path, class: "btn btn-small" %>
-  </div>
+  <li class="nav-item">
+    <%= link_to 'Register', register_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Log In", login_path, class: "nav-link" %>
+  </li>
 <% end %>
 
-</ul>
+</nav>
+

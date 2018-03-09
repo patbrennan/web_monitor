@@ -1,21 +1,23 @@
 <%= render "shared/title", title: "Your Alerts" %>
 
 <div>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>URL</th>
-      <th>Created On</th>
-      <th>Crawl Interval</th>
-      <th>RTT</th>
-      <th>Active?</th>
-      <th>Status</th>
-    </tr>
-    <% current_user.alerts.each do |alert| %>
+  <table class="table table-sm alert-table">
+    <thead>
       <tr>
-        <%= render "alert", alert: alert %>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Created On</th>
+        <th>Crawl Interval</th>
+        <th><span data-toggle="tooltip" data-placement="top" title="Response Time Threshold">RTT</span></th>
+        <th>Active?</th>
+        <th>Status</th>
       </tr>
-      <br>
+    </thead>
+    
+    <tbody>
+    <% current_user.alerts.each do |alert| %>
+      <%= render "alert", alert: alert %>
+    <% end %>
+    </tbody>
   </table>
-  <% end %>
 </div>

@@ -1,6 +1,7 @@
 class AlertsController < ApplicationController
   before_action :require_user # require a user first
   before_action :set_user, only: [:show, :edit]
+  before_action :set_alert, only: [:show]
   before_action :require_shared_user, only: [:edit, :update, :destroy, :crawls, :show]
   
   def index; end
@@ -56,7 +57,7 @@ class AlertsController < ApplicationController
   end
   
   def set_alert
-    
+    @alert = Alert.find(params[:id])
   end
   
   def set_user
@@ -65,7 +66,7 @@ class AlertsController < ApplicationController
   
   # User must be in the join table user_alerts (shared) to have access
   def require_shared_user
-    @alert = Alert.find(params[:id])
+    set_alert
     access_denied unless @alert.users.include? current_user
   end
 end

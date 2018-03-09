@@ -1,0 +1,45 @@
+<div class="mt-4 mb-4">
+  <h3>
+    <%= "Alert: #{@alert.name}" %>
+    <small><%= link_to "(edit alert)", edit_user_alert_path(@user, @alert) %></small>
+  </h3>
+  <hr/>
+</div>
+
+<table class="table table-sm alert-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Created On</th>
+      <th>Crawl Interval</th>
+      <th><span data-toggle="tooltip" data-placement="top" title="Response Time Threshold">RTT</span></th>
+      <th>Active?</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= render "alert", alert: @alert %>
+  </tbody>
+</table>
+
+<h4>Crawls:</h4>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Resp. Time</th>
+      <th>Resp. Size</th>
+      <th>Response</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @alert.crawls.each do |crawl| %>
+      <%= render "crawls/crawl", crawl: crawl %>
+    <% end %>
+  </tbody>
+</table>

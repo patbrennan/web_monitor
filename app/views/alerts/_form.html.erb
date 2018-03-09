@@ -1,24 +1,33 @@
-<div>
-  <%= form_for [@user, @alert] do |f| %>
+<div class="row justify-content-center">
+  
+<%= form_for [@user, @alert], class: "col-6" do |f| %>
+  <div class="form-group row">
     <%= f.label :name, "Alert Name" %>
-    <%= f.text_field :name %>
-    <br>
+    <%= f.text_field :name, class: "form-control", placeholder: "Some Name" %>
+  </div>
+  <div class="form-group row">
     <%= f.label :url, "URL" %>
-    <%= f.url_field :url %>
-    <br>
+    <%= f.url_field :url, class: "form-control", placeholder: "http://domain.com" %>
+  </div>
+  <div class="form-group row">
     <%= f.label :crawl_interval_mins, "Crawl Interval (mins)" %>
-    <%= f.number_field :crawl_interval_mins, min: 30 %>
-    <br>
+    <%= f.number_field :crawl_interval_mins, min: 30, class: "form-control", placeholder: "time in minutes" %>
+  </div>
+  <div class="form-group row">
     <%= f.label :response_time_threshold_ms, "Response Time Threshold (ms)" %>
-    <%= f.number_field :response_time_threshold_ms %>
-    <br>
-    <%= f.label :active, "Active?" %>
-    <%= f.check_box :active %>
-    <br>
+    <%= f.number_field :response_time_threshold_ms, class: "form-control", placeholder: "time in milliseconds" %>
+  </div>
+  <div class="form-group row align-items-center">
+    <%= f.label :active, "Active?", class: "col-form-label" %>
+    <%= f.check_box :active, class: "col-1" %>
+  </div>
+  <div class="form-group row">
     <%= f.label :notify_emails, "Notification Emails:" %>
-    <%= f.text_field :notify_emails %>
-    <br>
-    
+    <%= f.text_area :notify_emails, class: "form-control", placeholder: "separate each email with a comma" %>
+  </div>
+  <div class="form-group row">
     <%= f.submit "#{@alert.new_record? ? 'Create' : 'Update'}", class: "btn btn-primary" %>
-  <% end %>
+  </div>
+<% end %>
+
 </div>

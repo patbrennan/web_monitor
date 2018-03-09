@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   resources :users, except: [:destroy, :index, :new, :show] do
     resources :alerts do
-      get :crawls # "/users/:username/alerts/crawls"
+      get :crawls # "/users/:username/alerts/crawls" - for json API only
     end
   end
 end

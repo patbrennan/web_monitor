@@ -1,7 +1,9 @@
-<td><%= alert.name %></td>
-<td><%= alert.url %></td>
-<td><%= alert.created_at %></td>
-<td><%= "#{alert.crawl_interval_mins} mins" %></td>
-<td><%= "#{alert.response_time_threshold_ms}ms" %></td>
-<td><%= alert.active %></td>
-<td><%= alert.current_status || "?" %></td>
+<tr class="clickable-row" data-url="<%= user_alert_path(current_user, alert) %>">  
+  <td><strong><%= alert.name %></strong></td>
+  <td><%= alert.url %></td>
+  <td><%= alert.created_at %></td>
+  <td><%= "#{alert.crawl_interval_mins} mins" %></td>
+  <td><%= "#{alert.response_time_threshold_ms}ms" %></td>
+  <td><%= alert.active %></td>
+  <td><%= alert.current_status || "?" %></td>
+</tr>
