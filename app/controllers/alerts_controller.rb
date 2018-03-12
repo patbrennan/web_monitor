@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   before_action :require_user # require a user first
-  before_action :set_user, only: [:show, :edit]
-  before_action :set_alert, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_alert, only: [:show, :edit]
   before_action :require_shared_user, only: [:edit, :update, :destroy, :crawls, :show]
   
   def index; end
@@ -33,8 +33,13 @@ class AlertsController < ApplicationController
     @alert = Alert.find(params[:id])
   end
   
-  def udpate # PUT /users/:user_id/alerts/:id/edit
-    
+  def update # PUT /users/:user_id/alerts/:id/edit
+    if @alert.update(alert_params)
+      flash[:success] = "Alert updated."
+      redirect_to user_alerts_path(@user)
+    else
+      render :edit
+    end
   end
   
   def destroy
@@ -46,6 +51,7 @@ class AlertsController < ApplicationController
     @crawls = @alert.crawls
     
     respond_to do |f|
+      f.html
       f.json { render json: @crawls }
     end
   end
