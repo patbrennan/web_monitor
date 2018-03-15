@@ -16,6 +16,25 @@
 @import "bootstrap";
 
 .clickable-row:hover {
-  cursor: pointer;
-  background-color: lightblue;
+  background-color: lightgray;
+}
+
+#new_alert select {
+  margin-left: 10px;
+}
+
+#crawl-history {
+  margin-top: 50px;
+}
+
+.bubble-good {
+  color: green;
+}
+
+.bubble-bad {
+  color: red;
+}
+
+.bubble-warn {
+  color: orange;
 }

@@ -1,13 +1,13 @@
 class AlertsController < ApplicationController
   before_action :require_user # require a user first
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :set_alert, only: [:show, :edit]
+  before_action :set_user, only: [:index, :show, :edit, :update]
+  before_action :set_alert, only: [:show, :edit, :destroy]
   before_action :require_shared_user, only: [:edit, :update, :destroy, :crawls, :show]
   
-  def index; end
+  def index # /users/:user_id/alerts
+  end 
   
   def show # /users/:user_id/alerts/:id
-    
   end
   
   def new # GET /users/:user_id/alerts/new
@@ -43,7 +43,11 @@ class AlertsController < ApplicationController
   end
   
   def destroy
+    @alert.destroy
     
+    respond_to do |format|
+      format.js
+    end
   end
   
   def crawls

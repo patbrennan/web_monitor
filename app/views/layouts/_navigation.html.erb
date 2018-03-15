@@ -1,7 +1,7 @@
 <nav class="nav justify-content-between">
   
   <% home_path = logged_in? ? user_alerts_path(current_user) : root_path %>
-  <%= link_to "Web_Monitor", home_path, class: "navbar-brand mb-0 h1 nav-item" %>
+  <%= link_to "theSitch", home_path, class: "navbar-brand mb-0 h1 nav-item" %>
 
 <% if logged_in? %>
   <%= link_to 'My Alerts', user_alerts_path(current_user), class: "nav-link nav-item" %>

@@ -11,7 +11,8 @@
   </div>
   <div class="form-group row">
     <%= f.label :crawl_interval_mins, "Crawl Interval (mins)" %>
-    <%= f.number_field :crawl_interval_mins, min: 30, class: "form-control", placeholder: "time in minutes" %>
+    <% opts = [["10", 10], ["30", 30], ["60", 60]] %>
+    <%= f.select :crawl_interval_mins, opts, {}, class: "form-control col-2" %>
   </div>
   <div class="form-group row">
     <%= f.label :response_time_threshold_ms, "Response Time Threshold (ms)" %>

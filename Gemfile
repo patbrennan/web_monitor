@@ -35,16 +35,24 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# URL validation
+gem 'validate_url', '~> 1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-end
+# User Watir for testing w/virtual browser environments to get website analytics
+# gem 'watir', '~> 6.0'
+# gem 'watir-webdriver-performance', '>= 0.2.4'
+
+# headless required to run headless browser in c9:
+# gem 'headless'
+# makes sure the latest browser drivers are downloaded:
+# gem 'webdrivers', '~> 3.0'
+
+# gem 'capybara', '~> 2.0.0'
+# gem 'selenium-webdriver', '~> 2.0'
+# gem 'capybara-webkit'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

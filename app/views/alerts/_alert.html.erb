@@ -1,9 +1,25 @@
-<tr class="clickable-row" data-url="<%= user_alert_path(current_user, alert) %>">  
-  <td><strong><%= alert.name %></strong></td>
+<tr class="clickable-row" data-id="<%= alert.id %>">
+  <td>
+    <span class="oi oi-media-record bubble-<%= last_crawl_status(alert) %>" title="Crawl Status" aria-hidden="true">
+    </span>
+  </td> 
+  <td>
+    <strong><%= link_to alert.name, user_alert_path(current_user, alert) %></strong>
+  </td>
   <td><%= alert.url %></td>
-  <td><%= alert.created_at %></td>
+  <td><small><%= format_date(alert.created_at) %></small></td>
+  <td><small><%= format_crawl_time(alert.last_crawl) %></small></td>
   <td><%= "#{alert.crawl_interval_mins} mins" %></td>
   <td><%= "#{alert.response_time_threshold_ms}ms" %></td>
-  <td><%= alert.active %></td>
-  <td><%= alert.current_status || "?" %></td>
+  <td><%= alert.active ? "Active" : "Paused" %></td>
+  <td>
+    <a href="<%= edit_user_alert_path(current_user, alert) %>">
+      <span class="oi oi-pencil" title="Edit Alert" aria-hidden="true"></span>
+    </a>
+  </td>
+  <td>
+    <%= link_to user_alert_path(current_user, alert), remote: true, method: :delete do %>
+      <span class="oi oi-trash" title="Delete Alert" aria-hidden="true"></span>
+    <% end %>
+  </td>
 </tr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308180021) do
+ActiveRecord::Schema.define(version: 20180315165458) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "url"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180308180021) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_crawl"
   end
 
   create_table "crawls", force: :cascade do |t|

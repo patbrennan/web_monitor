@@ -2,20 +2,11 @@
 
 <div>
   <table class="table table-sm alert-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>URL</th>
-        <th>Created On</th>
-        <th>Crawl Interval</th>
-        <th><span data-toggle="tooltip" data-placement="top" title="Response Time Threshold">RTT</span></th>
-        <th>Active?</th>
-        <th>Status</th>
-      </tr>
-    </thead>
+    <%= render "alert_table_head", alert: @alert %>
     
     <tbody>
-    <% current_user.alerts.each do |alert| %>
+    <% @user.alerts.each do |alert| %>
+    <%# require 'pry'; binding.pry %>
       <%= render "alert", alert: alert %>
     <% end %>
     </tbody>
