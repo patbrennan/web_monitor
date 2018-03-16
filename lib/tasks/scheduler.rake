@@ -3,12 +3,14 @@ task :crawl_next => :environment do
   alerts = Alert.where(active: true).includes(:crawls)
   
   alerts.each do |alert|
-    if !alert.crawls.last.nil?
-      last_crawl_time = alert.crawls.last.crawl_time
+    last = alert.crawls.last
+    
+    if !last.nil?
+      last_crawl_time = last.crawl_time
     end
     
-    if (alert.crawls.last.nil?) ||
-       (last_crawl_time < (Time.now + alert.crawl_interval_mins*60))
+    if (last.nil?) ||
+       ((last_crawl_time + alert.crawl_interval_mins*60) < Time.now)
       crawl_stats = alert.crawl
       crawl_stats ? Crawl.create(crawl_stats) : alert.deactivate
       # TODO: send_deactivation_email
