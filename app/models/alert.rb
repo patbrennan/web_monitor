@@ -1,6 +1,6 @@
 class Alert < ActiveRecord::Base
   has_many :user_alerts
-  has_many :users, through: :user_alerts
+  has_many :users, through: :user_alerts, dependent: :destroy
   has_many :crawls, dependent: :destroy
   
   before_save :activate
