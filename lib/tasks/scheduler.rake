@@ -1,6 +1,6 @@
 desc "perform crawls"
 task :crawl_next => :environment do
-  alerts = Alert.where(active: true)
+  alerts = Alert.where(active: true).includes(:crawls)
   
   alerts.each do |alert|
     if !alert.crawls.last.nil?
