@@ -15,12 +15,12 @@ module ApplicationHelper
   def last_crawl_status(alert)
     return "warn" if alert.crawls.empty?
     
-    status = alert.crawls.last.status
+    status = alert.crawls.last.resp_status
     
-    case status
-    when "OK"
+    case
+    when status == "OK"
       "good"
-    when !"OK"
+    when status != "OK"
       "bad"
     else
     end

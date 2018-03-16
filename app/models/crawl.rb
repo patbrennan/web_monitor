@@ -4,7 +4,7 @@ class Crawl < ActiveRecord::Base
   after_save :update_alert_last_crawl
   
   def update_alert_last_crawl
-    self.alert.last_crawl = self.crawl_time
-    self.alert.update
+    alert = self.alert
+    alert.update(last_crawl: self.crawl_time)
   end
 end

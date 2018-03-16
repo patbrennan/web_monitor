@@ -6,7 +6,6 @@
     
     <tbody>
     <% @user.alerts.each do |alert| %>
-    <%# require 'pry'; binding.pry %>
       <%= render "alert", alert: alert %>
     <% end %>
     </tbody>
