@@ -17,8 +17,14 @@
     <%= f.label :time_zone, "Time Zone" %>
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name, class: "custom-select" %>
   </div>
+  
+  <% if @user.new_record? %>
+    <%= recaptcha_tags %>
+    <br>
+  <% end %>
+  
+  <%= f.submit "#{@user.new_record? ? 'Register' : 'Update'}", class: "btn btn-primary" %>
     
-    <%= f.submit "#{@user.new_record? ? 'Register' : 'Update'}", class: "btn btn-primary" %>
 <% end %>
   
 </div>

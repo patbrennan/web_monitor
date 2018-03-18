@@ -21,7 +21,9 @@ TODO:
 <!--4. edit / delete icons-->
 <!--5. user_alerts view: better status, created, last crawl time, date format-->
 <!--3. edit interface: better tables-->
-3. Get tasks up & running on heroku
+<!--3. Get tasks up & running on heroku-->
+<!--5. learn: obscure keys / keep secret-->
+6. Add google captcha to registration page
 4. integrate email service
 5. approve users email
 6. alert emails

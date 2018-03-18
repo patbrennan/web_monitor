@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 # URL validation
 gem 'validate_url', '~> 1.0'
 
+# Use google's recaptcha 
+gem 'recaptcha', require: "recaptcha/rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -52,7 +52,7 @@ class AlertsController < ApplicationController
   
   def crawls
     @alert = Alert.find(params[:alert_id])
-    @crawls = @alert.crawls
+    @crawls = @alert.crawls.limit(10).sort_by { |c| c.crawl_time }.reverse
     
     respond_to do |f|
       f.html

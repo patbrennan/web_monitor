@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :require_user, except: [:new, :create]
   before_action :require_same_user, only: [:edit, :update]
+  # before_action :verify_recaptcha, only: [:create]
   
   def new
     @user = User.new
@@ -10,8 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     
-    if @user.save
-      flash[:success] = "Registration requested. You'll receive an email when approved."
+    if verify_recaptcha(model: @user) && @user.save
+      flash[:success] = "Registration requested. Please verify your email address, and wait for approval."
       redirect_to login_path
     else
       render :new
