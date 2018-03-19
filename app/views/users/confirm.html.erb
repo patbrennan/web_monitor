@@ -1,0 +1,15 @@
+<%= render "shared/title", title: "Email Address Confirmation:" %>
+
+<% if @confirmed %>
+  <div class="alert alert-success">
+    <p>
+      Your email has been confirmed. You will receive an email when your account is activated.
+    </p>
+  </div>
+<% else %>
+  <div class="alert alert-danger">
+    <p>
+      Something went wrong with your account activation.
+    </p>
+  </div>
+<% end %>

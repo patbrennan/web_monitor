@@ -23,8 +23,9 @@ TODO:
 <!--3. edit interface: better tables-->
 <!--3. Get tasks up & running on heroku-->
 <!--5. learn: obscure keys / keep secret-->
-6. Add google captcha to registration page
+<!--6. Add google captcha to registration/login page-->
 4. integrate email service
-5. approve users email
+5. approve users email (don't activate immediately in model)
 6. alert emails
+5. add confirm delete modal
 7. Move to AWS c9 to implement headless browser/Watir testing & performance nums

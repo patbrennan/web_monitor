@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :require_user, except: [:new, :create]
+  before_action :require_user, except: [:new, :create, :confirm]
   before_action :require_same_user, only: [:edit, :update]
   # before_action :verify_recaptcha, only: [:create]
   
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if verify_recaptcha(model: @user) && @user.save
+      UserMailer.confirm_email(@user).deliver_later
       flash[:success] = "Registration requested. Please verify your email address, and wait for approval."
       redirect_to login_path
     else
@@ -33,6 +34,14 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def confirm
+    @user = User.find_by(username: params[:user_id])
+    str = @user.email + Cred.find("sitch_key")
+    @confirmed = BCrypt::Password.new(params[:conf_id]) == str
+    
+    @user.update(email_confirmed: true) if @confirmed
   end
   
   private

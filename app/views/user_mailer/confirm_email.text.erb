@@ -1,0 +1,8 @@
+Welcome to theSitch, <%= @user.username %>.
+===========================================
+
+You have successfully registered, but please copy/paste this link into your browser to confirm your email address: <%= user_confirm_url(@user) + "?conf_id=#{@hash}" %>.
+
+To login to the site, just go to www.theSitch.herokuapp.com/login.
+
+Happy website monitoring!

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to <strong>theSitch</strong>, <%= @user.username %></h1>
+    <p>
+      You have successfully registered, but please <strong>click this link to confirm your email address:
+    </p>
+    <p>
+      </strong> <%= link_to "CONFIRM EMAIL >>", user_confirm_url(@user) + "?conf_id=#{@hash}" %>.<br>
+    </p>
+    <p>Happy website monitoring!</p>
+  </body>
+</html>

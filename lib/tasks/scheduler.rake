@@ -10,7 +10,7 @@ task :crawl_next => :environment do
     end
     
     if (last.nil?) ||
-       ((last_crawl_time + alert.crawl_interval_mins*60) < Time.now)
+       ((last_crawl_time + alert.crawl_interval_mins*60) < Time.now + 1)
       crawl_stats = alert.crawl
       crawl_stats ? Crawl.create(crawl_stats) : alert.deactivate
       # TODO: send_deactivation_email

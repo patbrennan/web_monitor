@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   
+  # Used for email address confirmation
+  # get "confirm", to: "users#confirm"
+  
   resources :users, except: [:destroy, :index, :new, :show] do
+    get :confirm
+    
     resources :alerts do
       get :crawls # "/users/:username/alerts/crawls" - for json API only
     end

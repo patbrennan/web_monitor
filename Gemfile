@@ -41,6 +41,10 @@ gem 'validate_url', '~> 1.0'
 # Use google's recaptcha 
 gem 'recaptcha', require: "recaptcha/rails"
 
+# Using MailGun API
+gem 'rest-client', '~> 2.0'
+gem 'mailgun-ruby', '~> 1.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

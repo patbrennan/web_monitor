@@ -15,7 +15,12 @@
   <%= recaptcha_tags %>
   <br>
   
-  <%= submit_tag "Login", class: "btn btn-primary " %>
+  <div class="row justify-content-end align-items-center">
+    <div class="col">
+      <%= link_to "Reset Password", "#" %>
+    </div>
+      <%= submit_tag "Login", class: "btn btn-primary " %>
+  </div>
 <% end %>
 
 </div>
