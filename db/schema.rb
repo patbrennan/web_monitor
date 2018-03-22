@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319155500) do
+ActiveRecord::Schema.define(version: 20180320145435) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "url"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180319155500) do
     t.datetime "updated_at", null: false
     t.boolean "active"
     t.boolean "email_confirmed"
+    t.string "pw_reset_token"
+    t.datetime "pw_reset_time"
   end
 
 end

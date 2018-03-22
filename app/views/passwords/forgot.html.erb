@@ -1,0 +1,14 @@
+<%= render "shared/title", title: "Reset Password" %>
+
+<div class="row justify-content-center">
+  <%= form_tag "/password/reset", class: "col-6" do %>
+    <div class="form-group">
+      <%= label_tag :email, "Enter Email:" %>
+      <%= text_field_tag :email, "", class: "form-control", placeholder: "your@email.com" %>
+    </div>
+    
+    <div class="row justify-content-begin col-6">
+      <%= submit_tag "Reset", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

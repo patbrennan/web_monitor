@@ -1,19 +1,26 @@
-desc "perform crawls"
+desc "perform crawls for active alerts if their interval has passed"
 task :crawl_next => :environment do
   alerts = Alert.where(active: true).includes(:crawls)
   
   alerts.each do |alert|
     last = alert.crawls.last
     
-    if !last.nil?
-      last_crawl_time = last.crawl_time
+    last_crawl_time = last.crawl_time if !last.nil?
+      
+    if last.nil? ||
+       (last_crawl_time + alert.crawl_interval_mins*60) < Time.now + 1
+      crawl_stats = alert.crawl
     end
     
-    if (last.nil?) ||
-       ((last_crawl_time + alert.crawl_interval_mins*60) < Time.now + 1)
-      crawl_stats = alert.crawl
-      crawl_stats ? Crawl.create(crawl_stats) : alert.deactivate
-      # TODO: send_deactivation_email
+    if crawl_stats
+      crawl = Crawl.new(crawl_stats)
+      crawl.save
+    
+      if crawl.exceeds_limits? || crawl.errors
+        UserMailer.crawl_alert(alert, crawl).deliver_later
+      end
+    else
+      alert.deactivate
     end
   end
 end

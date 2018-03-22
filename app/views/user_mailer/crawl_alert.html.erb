@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Alert For: <%= @alert.name %></h1>
+    <p>
+      We've detected issues with the the following alert you have set up on theSitch:
+    </p>
+    
+    <h3>Last Crawl Results:</h3>
+    <strong>URL</strong>: <%= @alert.url %><br>
+    <strong>Crawl Time</strong>: <%= @crawl.crawl_time %><br>
+    <strong>Response Code</strong>: <%= @crawl.resp_code %><br>
+    <strong>Response Status</strong>: <%= @crawl.resp_status %><br>
+    <strong>Response Time</strong>: <%= @crawl.resp_time_ms %> ms<br>
+    <strong>Response Size</strong>: <%= @crawl.resp_size_kb %> kb<br> <%# TODO: mb %>
+    
+    <p>We suggest contacting your website administrator to look into this further.</p>
+    
+    <p><%= link_to, "LOG IN HERE", login_url %> to see crawl history & edit alerts.</p>
+  </body>
+</html>

@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   
-  # Used for email address confirmation
-  # get "confirm", to: "users#confirm"
+  
+  # Forgot password flow
+  get "/password/forgot", to: "passwords#forgot"
+  get "/password/edit", to: "passwords#edit"
+  post "/password/reset", to: "passwords#reset"
+  post "/password/update", to: "passwords#update"
   
   resources :users, except: [:destroy, :index, :new, :show] do
-    get :confirm
+    get :confirm # Used for email address confirmation
     
     resources :alerts do
       get :crawls # "/users/:username/alerts/crawls" - for json API only

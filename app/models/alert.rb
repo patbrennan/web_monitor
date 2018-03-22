@@ -17,8 +17,11 @@ class Alert < ActiveRecord::Base
   
   def deactivate
     self.active = false
+    UserMailer.alert_deactivated(self).deliver_later
   end
   
+  # Return a hash corresponding to a Crawl's schema, to be used in creating
+  # a new crawl record
   def crawl
     data = {}
     resp = nil

@@ -2,17 +2,12 @@
 *= require_self
  
 ## Cron Jobs / Schedulers
- 
-- Job runs every 10 mins
-```ruby
-# cron every 10 mins
 
-# @alerts = Alert.where(active: true) # get list of crawls as well?
-# iterate through each
-# if alert.last_crawl < time.now + (alert.crawl_int_mins * 60)
-# crawl_stats = alert.crawl
-# Crawl.create(crawl_stats)
-```
+- Put in scheduler.rb
+- As method on crawl, email after_save
+- As method on alert, using crawl_stats
+ 
+- crawl.exceeds_limits?
 
 TODO:
 <!--1. create rake tasks-->
@@ -24,7 +19,7 @@ TODO:
 <!--3. Get tasks up & running on heroku-->
 <!--5. learn: obscure keys / keep secret-->
 <!--6. Add google captcha to registration/login page-->
-4. integrate email service
+<!--4. integrate email service-->
 5. approve users email (don't activate immediately in model)
 6. alert emails
 5. add confirm delete modal

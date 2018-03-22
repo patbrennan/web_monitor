@@ -1,0 +1,17 @@
+Alert For: <%= @alert.name %>
+=====================================
+
+We've detected issues with the the following alert you have set up on theSitch:
+
+Last Crawl Results:
+
+  URL: <%= @alert.url %>
+  Crawl Time: <%= @crawl.crawl_time %>
+  Response Code: <%= @crawl.resp_code %>
+  Response Status: <%= @crawl.resp_status %>
+  Response Time: <%= @crawl.resp_time_ms %> ms
+  Response Size: <%= @crawl.resp_size_kb %> kb <%# TODO: mb %>
+    
+We suggest contacting your website administrator to look into this further.
+    
+<%= link_to, "LOG IN HERE", login_url %> to see crawl history & edit alerts.

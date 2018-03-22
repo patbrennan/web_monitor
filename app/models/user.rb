@@ -25,4 +25,12 @@ class User < ActiveRecord::Base
   def to_param
     self.username
   end
+  
+  def valid_pw_token?(token)
+    token && self.pw_reset_token == token
+  end
+  
+  def token_expired?
+    self.pw_reset_time + 1.hours < Time.now
+  end
 end

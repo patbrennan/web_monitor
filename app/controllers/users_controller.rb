@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user && @user.update(user_params)
       flash[:success] = "Updated Profile for #{@user.username}"
-      redirect_to :back
+      redirect_to edit_user_path(@user)
     elsif !@user
       flash[:error] = "User not found"
       redirect_to root_path
