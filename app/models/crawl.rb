@@ -12,7 +12,7 @@ class Crawl < ActiveRecord::Base
     self.resp_time_ms > self.alert.response_time_threshold_ms
   end
   
-  def errors
+  def bad_resp_code?
     self.resp_code != "200"
   end
 end

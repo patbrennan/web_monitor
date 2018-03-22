@@ -16,7 +16,7 @@ task :crawl_next => :environment do
       crawl = Crawl.new(crawl_stats)
       crawl.save
     
-      if crawl.exceeds_limits? || crawl.errors
+      if crawl.exceeds_limits? || crawl.bad_resp_code?
         UserMailer.crawl_alert(alert, crawl).deliver_later
       end
     else

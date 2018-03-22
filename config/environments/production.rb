@@ -94,7 +94,7 @@ Rails.application.configure do
   # Use Mailgun with ActionMailer
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: "key-de2210fb56e7a6eb4e9b632b217c9175", # Cred.find("mailgun_api_key"),
+    api_key: Rails.application.secrets.mailgun_api_key,
     domain: "sitchapp.junecommerce.org",
   }
 end

@@ -17,6 +17,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
 # For making http requests & getting responses back:
 gem 'httparty', '~> 0.16.0'
 # Use Bootstrap

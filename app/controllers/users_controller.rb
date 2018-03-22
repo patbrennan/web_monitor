@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   
   def confirm
     @user = User.find_by(username: params[:user_id])
-    str = @user.email + Cred.find("sitch_key")
+    str = @user.email + Rails.application.secrets.sitch_key
     @confirmed = BCrypt::Password.new(params[:conf_id]) == str
     
     @user.update(email_confirmed: true) if @confirmed
