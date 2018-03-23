@@ -25,4 +25,10 @@ class UserMailer < ApplicationMailer
     
     mail(to: @user.email, subject: "Your Alert Has Been Deactivated")
   end
+  
+  def account_activated(user)
+    @user = user
+    
+    mail(to: @user.email, subject: "Your Account has Been Approved")
+  end
 end

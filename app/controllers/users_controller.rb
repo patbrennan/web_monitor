@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :require_user, except: [:new, :create, :confirm]
+  before_action :require_user, except: [:new, :create, :confirm, :approve]
   before_action :require_same_user, only: [:edit, :update]
-  # before_action :verify_recaptcha, only: [:create]
   
   def new
     @user = User.new
@@ -41,7 +40,21 @@ class UsersController < ApplicationController
     str = @user.email + Rails.application.secrets.sitch_key
     @confirmed = BCrypt::Password.new(params[:conf_id]) == str
     
-    @user.update(email_confirmed: true) if @confirmed
+    if @confirmed
+      @user.update(email_confirmed: true)
+      AdminMailer.approve(@user).deliver_later
+    end
+  end
+  
+  def approve
+    @user = User.find_by(username: params[:user_id])
+    str = @user.username + Rails.application.secrets.sitch_key
+    @confirmed = BCrypt::Password.new(params[:conf_id]) == str
+    
+    if @confirmed
+      @user.update(active: true)
+      UserMailer.account_activated(@user).deliver_later
+    end
   end
   
   private

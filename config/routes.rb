@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   resources :users, except: [:destroy, :index, :new, :show] do
     get :confirm # Used for email address confirmation
+    get :approve # used for admin to approve a user
     
     resources :alerts do
       get :crawls # "/users/:username/alerts/crawls" - for json API only

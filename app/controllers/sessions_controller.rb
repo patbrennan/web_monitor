@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
     
-    if @user && @user.authenticate(params[:password]) && verify_recaptcha(model: @user)
+    if @user && @user.active &&
+      @user.authenticate(params[:password]) && verify_recaptcha(model: @user)
+      
       session[:user_id] = @user.id
       flash[:success] = "You're logged in"
       redirect_to user_alerts_path(@user)

@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :user_alerts
   has_many :alerts, through: :user_alerts, dependent: :destroy
   
-  before_save :activate
-  
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: {minimum: 6}, on: :create

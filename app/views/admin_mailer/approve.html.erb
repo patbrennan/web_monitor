@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New User Requesting Access</h1>
+    
+    <h3>User Details:</h3>
+    <strong>Username</strong>: <%= @user.username %><br>
+    <strong>Email</strong>: <%= @user.email %><br>
+    <strong>Created</strong>: <%= @user.created_at %><br>
+    <strong>Time Zone</strong>: <%= @user.time_zone %><br>
+    <strong>IP Address:</strong>: TBD<br> <%# TODO: Add IP-locations %>
+    <strong>IP Location:</strong>: TBD<br>
+    
+    <p>
+      <%= link_to "APPROVE USER >>", user_approve_url(@user) + "?conf_id=#{@hash}" %>
+    </p>
+  </body>
+</html>

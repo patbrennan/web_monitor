@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Account is now active for: <%= @user.username %></h1>
+    <p>
+      Your account has been approved! You may now log in & start setting up your website monitoring alerts.<br>
+      <strong>Click here to log in:</strong>
+    </p>
+    <p>
+      <%= link_to "LOG IN >>", login_url %>
+    </p>
+    <p>Happy website monitoring!</p>
+  </body>
+</html>
